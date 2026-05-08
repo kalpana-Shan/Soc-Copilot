@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
-from db.database import engine, Base  # ADD THIS
+from db.database import engine, Base
+from db.init_db import init_db
+import models  # This registers all models with Base
 
 load_dotenv()
 
@@ -15,10 +17,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.on_event("startup")          # ADD THIS
+@app.on_event("startup")
 def startup():
-    Base.metadata.create_all(bind=engine)
-    print("✅ Database connected successfully!")
+    init_db()
 
 @app.get("/health")
 def health_check():
