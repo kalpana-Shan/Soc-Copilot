@@ -3,7 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from db.database import engine, Base
 from db.init_db import init_db
-import models  # This registers all models with Base
+import models
+from routers.alerts import router as alerts_router  # ADD THIS
 
 load_dotenv()
 
@@ -17,6 +18,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(alerts_router, prefix="/alerts", tags=["alerts"])  # ADD THIS
+
 @app.on_event("startup")
 def startup():
     init_db()
@@ -28,4 +31,3 @@ def health_check():
 @app.get("/")
 def root():
     return {"message": "SOC Copilot Backend - Security Operations Center Assistant"}
-

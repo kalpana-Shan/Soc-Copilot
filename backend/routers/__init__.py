@@ -1,0 +1,1 @@
+from .alerts import router as alerts_router
