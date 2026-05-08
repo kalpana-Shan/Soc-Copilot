@@ -28,3 +28,4 @@ def health_check():
 @app.get("/")
 def root():
     return {"message": "SOC Copilot Backend - Security Operations Center Assistant"}
+
