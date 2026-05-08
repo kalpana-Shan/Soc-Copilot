@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
+from db.database import engine, Base  # ADD THIS
 
 load_dotenv()
 
@@ -13,6 +14,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.on_event("startup")          # ADD THIS
+def startup():
+    Base.metadata.create_all(bind=engine)
+    print("✅ Database connected successfully!")
 
 @app.get("/health")
 def health_check():
