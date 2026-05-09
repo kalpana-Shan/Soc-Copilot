@@ -1,0 +1,64 @@
+{
+  "alerts": [
+    {
+      "source": "okta",
+      "user_id": "attacker@evil.com",
+      "ip_address": "185.220.101.1",
+      "event_type": "login_failed",
+      "raw_data": {
+        "failed_count": 10,
+        "timestamp": "2026-05-09T03:00:00",
+        "location": "Russia",
+        "device": "Unknown"
+      }
+    },
+    {
+      "source": "azure_ad",
+      "user_id": "john.doe@company.com",
+      "ip_address": "45.33.32.156",
+      "event_type": "suspicious_login",
+      "raw_data": {
+        "failed_count": 6,
+        "timestamp": "2026-05-09T02:30:00",
+        "location": "China",
+        "device": "Windows PC"
+      }
+    },
+    {
+      "source": "cloudtrail",
+      "user_id": "admin@company.com",
+      "ip_address": "10.0.0.1",
+      "event_type": "login_failed",
+      "raw_data": {
+        "failed_count": 3,
+        "timestamp": "2026-05-09T23:45:00",
+        "location": "India",
+        "device": "MacBook"
+      }
+    },
+    {
+      "source": "okta",
+      "user_id": "jane.smith@company.com",
+      "ip_address": "203.0.113.42",
+      "event_type": "suspicious_login",
+      "raw_data": {
+        "failed_count": 2,
+        "timestamp": "2026-05-09T22:00:00",
+        "location": "Germany",
+        "device": "iPhone"
+      }
+    },
+    {
+      "source": "azure_ad",
+      "user_id": "bob.wilson@company.com",
+      "ip_address": "172.16.0.5",
+      "event_type": "login_success",
+      "raw_data": {
+        "failed_count": 0,
+        "timestamp": "2026-05-09T10:00:00",
+        "location": "India",
+        "device": "Chrome Browser"
+      }
+    }
+  ]
+}
