@@ -4,7 +4,9 @@ from dotenv import load_dotenv
 from db.database import engine, Base
 from db.init_db import init_db
 import models
-from routers.alerts import router as alerts_router  # ADD THIS
+from routers.alerts import router as alerts_router
+from routers.incidents import router as incidents_router
+from routers.copilot import router as copilot_router
 
 load_dotenv()
 
@@ -18,7 +20,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(alerts_router, prefix="/alerts", tags=["alerts"])  # ADD THIS
+app.include_router(alerts_router, prefix="/alerts", tags=["alerts"])
+app.include_router(incidents_router, prefix="/incidents", tags=["incidents"])
+app.include_router(copilot_router, prefix="/copilot", tags=["copilot"])
 
 @app.on_event("startup")
 def startup():
